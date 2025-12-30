@@ -48,9 +48,47 @@
 
         .container {
             position: relative;
-            width: 1200px;
-            height: 1200px;
-            transform: translateY(-250px);
+            width: 90vw;
+            height: 90vw;
+            max-width: 1200px;
+            max-height: 1200px;
+            transform: translateY(-20vh);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                transform: translateY(-10vh);
+            }
+            
+            .center-text {
+                font-size: 18px;
+                padding: 15px;
+                top: 48%;
+                left: 50%;
+            }
+            
+            .message {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                transform: translateY(-15vh);
+            }
+            
+            .center-text {
+                font-size: 24px;
+                padding: 20px;
+                top: 48%;
+                left: 53%;
+            }
+            
+            .message {
+                font-size: 12px;
+                padding: 6px 8px;
+            }
         }
 
         .center-text {
@@ -211,9 +249,11 @@
         ];
 
         const container = document.getElementById('container');
-        const centerX = 600;
-        const centerY = 600;
-        const heartSize = 450;
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+        const centerX = containerWidth / 2;
+        const centerY = containerHeight / 2;
+        const heartSize = Math.min(containerWidth, containerHeight) * 0.45;
 
         // 生成爱心形状并添加祝福语
         messages.forEach((msg, i) => {
