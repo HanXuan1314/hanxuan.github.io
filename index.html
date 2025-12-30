@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱心祝福</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -2;
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://via.placeholder.com/1920x1080/667eea/ffffff?text=背景图片：女生拿着北大录取通知书站在北大门前');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            width: 1200px;
+            height: 1200px;
+            transform: translateY(-250px);
+        }
+
+        .center-text {
+            position: absolute;
+            top: 48%;
+            left: 56%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-weight: bold;
+            color: #e74c3c;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .message {
+            position: absolute;
+            font-size: 14px;
+            color: #fff;
+            font-weight: bold;
+            opacity: 0;
+            animation: bounceIn 0.8s ease-out forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            border: 2px solid #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: rgba(231, 76, 60, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(20px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) translateY(-10px);
+            }
+            70% {
+                transform: scale(0.9) translateY(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container" id="container">
+        <div class="center-text">祝亲爱的十十</div>
+
+    </div>
+
+    <script>
+        const messages = [
+            "新年快乐万事如意",
+            "高考顺利圆梦北大",
+            "金榜题名北大等你",
+            "新年大吉大利",
+            "高考必胜北大我来了",
+            "新年心想事成",
+            "北大见",
+            "新年行大运",
+            "努力冲刺圆梦北大",
+            "新年新气象学业进步",
+            "高考加油你最棒",
+            "新年快乐",
+            "考上北大梦想成真",
+            "高考加油",
+            "新年快乐心想事成",
+            "北大录取通知书等你",
+            "高考加油金榜题名",
+            "新年快乐万事胜意",
+            "圆梦北大指日可待",
+            "高考加油前程似锦",
+            "新年快乐步步高升",
+            "北大校园欢迎你",
+            "高考加油未来可期",
+            "新年快乐平安喜乐",
+            "考上北大前程似锦",
+            "高考加油梦想成真",
+            "新年快乐阖家幸福",
+            "北大录取通知书",
+            "高考加油一帆风顺",
+            "新年快乐身体健康",
+            "圆梦北大未来可期",
+            "高考加油马到成功",
+            "新年快乐财源广进",
+            "北大校园等你来",
+            "高考加油旗开得胜",
+            "新年快乐事业有成",
+            "考上北大前程无量",
+            "高考加油心想事成",
+            "新年快乐万事顺遂",
+            "北大梦想实现",
+            "高考加油学业有成",
+            "新年快乐吉星高照",
+            "北大录取通知书到手",
+            "高考加油鹏程万里",
+            "新年快乐福气满满",
+            "圆梦北大不负韶华",
+            "高考加油前程万里",
+            "新年快乐好运连连",
+            "北大校园见",
+            "高考加油梦想启航",
+            "新年快乐幸福安康",
+            "考上北大不负青春",
+            "高考加油未来光明",
+            "新年快乐吉祥如意",
+            "北大录取通知书来啦",
+            "高考加油一鸣惊人",
+            "新年快乐福星高照",
+            "圆梦北大青春无悔",
+            "高考加油前程似锦",
+            "新年快乐万事大吉",
+            "北大校园等你加入",
+            "高考加油梦想启航",
+            "新年快乐心想事成",
+            "考上北大未来可期",
+            "高考加油前程万里",
+            "新年快乐平安健康",
+            "北大录取通知书在等你",
+            "高考加油一飞冲天",
+            "新年快乐幸福美满",
+            "圆梦北大不负期待",
+            "高考加油前程似锦",
+            "新年快乐财源滚滚",
+            "北大校园欢迎新生",
+            "高考加油梦想成真",
+            "新年快乐事业兴旺",
+            "考上北大前程无量",
+            "高考加油鹏程万里",
+            "新年快乐吉星照",
+            "北大录取通知书",
+            "高考加油一帆风顺",
+            "新年快乐福气旺",
+            "圆梦北大青春无悔",
+            "高考加油前程万里",
+            "新年快乐好运来",
+            "北大校园等你来",
+            "高考加油梦想启航",
+            "新年快乐幸福来",
+            "考上北大不负韶华",
+            "高考加油未来光明",
+            "新年快乐吉祥来",
+            "北大录取通知书到手",
+            "高考加油一鸣惊人",
+            "新年快乐福星来",
+            "圆梦北大不负青春",
+            "高考加油前程万里"
+        ];
+
+        const container = document.getElementById('container');
+        const centerX = 600;
+        const centerY = 600;
+        const heartSize = 450;
+
+        // 生成爱心形状并添加祝福语
+        messages.forEach((msg, i) => {
+            const t = (i / messages.length) * 2 * Math.PI;
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+
+            const div = document.createElement('div');
+            div.className = 'message';
+            div.textContent = msg;
+            div.style.left = (centerX + x * heartSize / 16) + 'px';
+            div.style.top = (centerY - y * heartSize / 16) + 'px';
+            div.style.animationDelay = (i * 0.08 + 0.5) + 's';
+            container.appendChild(div);
+        });
+    </script>
+</body>
+</html>
